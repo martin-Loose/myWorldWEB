@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet name="../resources/css/register.css"/>
+</h:head>
+<h:body>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../resources/templates/public/publicTemplate.xhtml">
+<ui:define name="content">
+<div class="row">
+ <div class="leftcolumn">
+  <div class="card">
+   <h:form id="formRegDone">           
+    <h:panelGroup id="A1">
+    <h:outputLabel value="Account created for #{createUser.username}"/><br/>
+    <h:commandLink value="Login" action="login2.xhtml"/>
+    </h:panelGroup>
+   </h:form>  
+  </div>
+ </div>
+</div>
+</ui:define>
+</ui:composition>
+</h:body>
+</html>
+

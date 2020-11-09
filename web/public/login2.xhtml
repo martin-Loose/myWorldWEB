@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<h:outputStylesheet name="../resources/css/login.css"/>
+        
+    </h:head>
+    <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../resources/templates/public/publicTemplate.xhtml">
+
+    <ui:define name="content">
+      <h:body onload="document.getElementById('id01').style.display = 'block'">
+         
+        <div id="id01" class="modal">
+            <h:form class="modal-content animate">
+                <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="../resources/css/avatar.png" alt="Avatar" class="avatar"/>
+          
+    </div>
+                <div class="logincontainer">
+                    <h:outputLabel for="uname" value="Username:"/><br/>
+                    <h:inputText  id="uname" required="true"  a:placeholder="Enter Username" 
+                                  value="#{loginControll.username}"/><br/>
+                    <h:outputLabel for="password" value="Password:"/><br/>
+                    <h:inputSecret  id="password" required="true"  a:placeholder="Enter Password"
+                                  value="#{loginControll.passwort}"/><br/>
+                    <h:commandButton class="button" type="submit" value="Login"
+                                     action="#{loginControll.login}" 
+                                     style="height: 55px;text-align: center;font-size: 16px;
+                                     width: 100%; border: none;background-color: greenyellow;" >
+                    </h:commandButton>
+                </div>
+                <div class="logincontainer" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('id01')
+                                .style.display = 'none'" class="cancelbtn">Cancel</button>
+                    <span class="psw">Forgot <a href="#">password?</a></span>
+                </div>
+            </h:form>
+        </div>
+        <script>
+        // Get the modal
+            var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            };
+        </script>
+    </h:body>
+    </ui:define>
+
+</ui:composition>
+   
+</html>
+

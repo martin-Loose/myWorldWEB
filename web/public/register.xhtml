@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet name="../resources/css/register.css"/>
+
+    </h:head>
+    <h:body>
+         <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../resources/templates/public/publicTemplate.xhtml">
+
+    <ui:define name="content">
+         <div class="container">
+           
+        <h:form id="formUserInput">           
+            <h:panelGroup id="A1">
+                <div style="text-align:  center">
+                    <h:outputLabel value="Please fill in this form to create an account."/><br/>
+                </div>
+                
+                <h:outputLabel value="Username:"/><br/>
+                <h:inputText id="username" value="#{createUser.username}"
+                             required="true" requiredMessage="Bitte Usernamen eingeben"
+                             validatorMessage="Nur Buchstaben,Zahlen und _ zulässig"
+                             a:placeholder="Enter Username">
+                    <f:validateRegex pattern="[\w]*" /></h:inputText><br/> 
+                <h:message for="username" showDetail="true" style="color: red;"/><br/>
+                <h:outputLabel value="Email:"/><br/>
+                <h:inputText id="email" value="#{createUser.email}" required="true" requiredMessage="Email fehlt" validatorMessage="Email unvollstaendig oder enthaelt unerlaubte Zeichen" a:placeholder="Enter your Email">
+                    <f:validateRegex 
+                        pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[\p{L}\p{M}\p{N}.-]*(\.[\p{L}\p{M}]{2,})$)?" for="email" />
+                </h:inputText><br/>
+                <h:message for="email"  style="color: red;"/><br/>
+                <h:outputLabel value="Passwort:"/><br/>
+                <h:inputSecret id="passwort1" value="#{createUser.passwort}" required="true"
+                               requiredMessage="Bitte Passwort eingeben" redisplay="true" 
+                               a:placeholder="Enter your Password"
+                               validatorMessage="Passwort mindestens 1 Klein,1 Grossbuchstabe,1 Zahl,min. 6 Zeichen, max 40 Zeichen">
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,40})" />       
+                </h:inputSecret><br/>
+                <h:message for="passwort1" style="color: red;" rendered="true" showDetail="true" /><br/>
+                <h:outputLabel value="Passwort bestaetigen:"/><br/>
+                <h:inputSecret id="pwd2" 
+                               required="true" requiredMessage="Bitte Passwort wiederholen" redisplay="true"
+                               validatorMessage="Passwort mindestens 1 Klein, 1 Grossbuchstabe,1 Zahl,min. 6 Zeichen, max 40 Zeichen"
+                               value="#{createUser.confirmPasswort}" a:placeholder="Confirm your Password">
+                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,40})" />                         
+                </h:inputSecret><br/><h:message for="pwd2" style="color:red" rendered="true" 
+                               showDetail="true" /><br/>
+                <h:commandButton type="submit" class="registerbtn" value="Go" 
+                                 action="#{createUser.createUser}"/>
+            <div class="container signin">
+    <p>Already have an account? <a href="/myWorld/public/login2.xhtml">Sign in</a>.</p>
+  </div>
+            </h:panelGroup>
+        </h:form>
+        </div>
+        </ui:define>
+         </ui:composition>
+    </h:body>
+
+</html>
+

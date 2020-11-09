@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+     
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/w3.css"/>
+        <h:outputStylesheet name="/css/table.css"/>
+        <h:outputStylesheet name="/css/login.css"/>
+        <h:outputStylesheet name="/css/responsiveNavbar.css"/>
+        <h:outputStylesheet name="/css/register.css"/>
+       
+    </h:head>
+    <h:body>
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../../../resources/templates/users/buddies/buddiesTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+            <ui:define name="content">
+                <script src="../../../resources/scripts/myScripts.js" type="text/javascript"></script>
+               
+        <div class="container" style="margin-top: 10px;height: 80%;border-color: #000;border-style: solid;">
+          <div class="row">
+              <div class="leftcolumn">
+                  <div class="card">
+                     
+                       <h:form id="userTable">
+                           <h:message id="acceptMessage" for="acceptRequest" showDetail="true" showSummary="true" style="background-color: lightcoral;"/>
+                        <br/>
+                        <h:dataTable value="#{requestService.alleREquests}" var="item" styleClass="employeeTable"
+                                     headerClass="employeeTableHeader"
+                                     rowClasses="employeeTableOddRow,employeeTableEvenRow" footerClass="employeeTableHeader">
+                            <f:facet name="header">
+                                <h:outputLabel value="Pending Requests"/>
+                            </f:facet>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText style="width: 100%;" value="From"/><br/>
+                                </f:facet>
+                                <h:outputText value="#{item.requester}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText style="width: 100%;" value="To"/><br/>
+                                </f:facet>
+                                <h:outputText value="#{item.requested}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name = "header">Accept</f:facet>
+                                <h:commandButton type="submit" class="acceptbtn"
+                                                 value = "accept" 
+                                                 action="#{acceptBuddyRequest.acceptRequest(item)}">
+                                 
+                                </h:commandButton>
+                            </h:column>
+                            <h:column>
+                                <f:facet name = "header">Delete</f:facet>
+                                <h:commandButton type="submit" class="deletebtn"  value = "delete"
+                                                 action="#{acceptBuddyRequest.deleteThisRequest(item.id)}">
+                                    
+                                </h:commandButton>        
+                            </h:column><!--
+                            <h:column>
+                                <f:facet name = "header">Block</f:facet>
+                              <h:commandButton class="myButton acceptbtn123" value = "denie"/>            
+                            </h:column>
+                            <h:column>
+                                <f:facet name = "header">Delete</f:facet>
+                                <h:commandButton class="myButton deletebtn123" value = "del"/>        
+                            </h:column>-->
+                        </h:dataTable>
+                    </h:form> 
+                  </div>
+              </div>
+          </div>
+      </div>
+               
+     
+    </ui:define>
+</ui:composition>
+    </h:body>
+</html>
