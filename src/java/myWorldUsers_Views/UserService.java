@@ -32,7 +32,7 @@ public class UserService extends UsersViewService_EJB implements Serializable {
     public String setSelectedUserString(String name){
     try{
         setSelectedUser(usersFacadeLocal.findByName(name));
-    return "/secured/user/userDetails?faces-redirect=true";
+    return "/secured/user/users/userDetails?faces-redirect=true";
     }catch(Exception e){
     }
     return null;

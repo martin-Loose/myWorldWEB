@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+     <!--   <meta http-equiv="refresh" content="10"/>-->
+    </h:head>
+    <h:body>
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="../../../resources/templates/users/messages/messagesTemplate.xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html">
+            <ui:define name="content">
+                <div class="container" style="margin-top: 10px;height: 80%;border-color: #000;border-style: solid;">
+                    <div class="row">
+                        <div class="leftcolumn" style="width: 200px;">
+                             <div class="card">
+                            <h:panelGroup>
+                               
+                            </h:panelGroup>
+                            </div>
+                            <div class="card">
+                                <h:form id="messageCreate">  
+                                     <h:commandLink value="Inbox: #{messageService.inbox}" action="messagesList.xhtml"/>
+                                    <h:panelGroup style="width: 150px;height: 300px;">
+                                        <h:message for="messageSend" showDetail="true" style="color: red;background-color: wheat;"/><br/>
+                                        <h:outputLabel value="Empfaenger: "/><h:outputLabel value="#{createMessageController.receiver}"/><br/>
+                                        <h:inputText value="#{createMessageController.titel}"   a:placeholder="Titel" style="width: 120px;"/><br/>
+                                        <h:inputTextarea value="#{createMessageController.message}" 
+                                                         style="width: 120px;height: 120px;" >
+                                            <f:ajax event="keyup" listener="#{createMessageController.test}" render="restzeichen"/>
+                                        </h:inputTextarea> <br/>
+                                        <h:outputLabel id="restzeichen" value="Zeichen verfuegbar: #{createMessageController.zeichen}"/><br/>
+                                        <h:commandButton value="Send" action="#{createMessageController.send}"/>
+                                    </h:panelGroup>
+                                </h:form>  
+                            </div>
+                        </div>                    
+                     </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
+
+

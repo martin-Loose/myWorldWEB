@@ -64,7 +64,7 @@ private UsersFacadeLocal usersFacade;
  
     public String convertTime(long time){
     Date date = new Date(time);
-    Format format = new SimpleDateFormat("dd.MM .yyyy HH:mm:ss");
+    Format format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
     return format.format(date);
 }
     
