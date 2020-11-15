@@ -21,6 +21,8 @@ body {
 .container {
   padding: 2px;
   background-color: #fdf5e6;
+  width: 100vH;
+  height: 78vH;
 }
 
 /* Full-width input fields */
@@ -99,6 +101,18 @@ hr {
   width: 100%;
   opacity: 0.9;
   border-radius: 10px;
+}
+.deleteLink {
+  background-color:#e87e04;/* #4CAF50;*/
+  color: black;
+  padding: 2px 2px;
+  margin: 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  text-decoration: none;
 }
 /*
 input[type=submit]{

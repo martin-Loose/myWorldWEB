@@ -2,27 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:body>
+    <h:body style="height: 100vH;">
         <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                         template="../../../resources/templates/users/usersTemplate.xhtml"
                         xmlns:h="http://xmlns.jcp.org/jsf/html">
-            <ui:define name="content">
-                <div class="container" style="margin-top: 10px;height: 80%;border-color: #000;border-style: solid;">
-                    <div class="row">
-                        <div class="leftcolumn">
-                            <div class="card">
-                                <h:panelGroup >
-                                 <h:outputLabel value="#{loginControll.authenticatedUser.username}´s Bereich"/><br/>
-                                    <h:outputLabel value="Buddies: #{buddiesService.myBuddies.size()}"/><br/>
-                                </h:panelGroup>
-                               
-                            </div>
-                        </div>
-                    </div>
+            <ui:define name="content" >
+                <div class="sidebar" style="height: auto;width: auto;">
+                    <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
+                    <a href="/myWorld/secured/user/users/userList.xhtml">Users</a>
+                    <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
+                    <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
+                    <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>
                 </div>
+                <div class="myContent" style="height: 75vH;"></div>  
             </ui:define>
         </ui:composition>
     </h:body>

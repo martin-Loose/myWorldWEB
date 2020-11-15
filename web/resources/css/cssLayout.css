@@ -1,12 +1,13 @@
 
 .center_content {
     height: 82%;
+    width: 100%;
     margin-top: 5px;
  /**   padding-top: 5px;
     padding-right:5px;**/
     padding: 10px;
 /**    position: relative;**/
-    background-color: #dddddd;
+    background-color: #888;
     
 }
 

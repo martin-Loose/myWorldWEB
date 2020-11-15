@@ -11,8 +11,8 @@
     <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="../resources/templates/public/publicTemplate.xhtml">
 
-    <ui:define name="content">
-      <h:body onload="document.getElementById('id01').style.display = 'block'">
+     <ui:define name="content" class="center_content">
+         <h:body onload="document.getElementById('id01').style.display = 'block'" style="height: 100vH;">
          
         <div id="id01" class="modal">
             <h:form class="modal-content animate">
@@ -27,11 +27,11 @@
                                   value="#{loginControll.username}"/><br/>
                     <h:outputLabel for="password" value="Password:"/><br/>
                     <h:inputSecret  id="password" required="true"  a:placeholder="Enter Password"
-                                  value="#{loginControll.passwort}"/><br/>
+                                  value="#{loginControll.passwort}"/><br/><br/>
                     <h:commandButton class="button" type="submit" value="Login"
                                      action="#{loginControll.login}" 
-                                     style="height: 55px;text-align: center;font-size: 16px;
-                                     width: 100%; border: none;background-color: greenyellow;" >
+                                     style="height: 50px;text-align: center;font-size: 16px;
+                                     width: 100%; border: none;background-color: greenyellow;margin-top: 10px;" >
                     </h:commandButton>
                 </div>
                 <div class="logincontainer" style="background-color:#f1f1f1">

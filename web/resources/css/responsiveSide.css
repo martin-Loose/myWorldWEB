@@ -6,7 +6,7 @@ body {
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 100px;
   background-color: #f1f1f1;
   position: fixed;
   height: 100%;
@@ -29,7 +29,11 @@ body {
   background-color: #555;
   color: white;
 }
-
+.myContent{
+   
+    margin-left: 150px; /**muss angepasst werden**/
+   /** height: 80vH;**/
+}
 div.content {
   margin-left: 200px;
   padding: 1px 16px;
@@ -44,6 +48,9 @@ div.content {
   }
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
+  .myContent{
+      margin-left: 0px;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -51,4 +58,5 @@ div.content {
     text-align: center;
     float: none;
   }
+ 
 }
