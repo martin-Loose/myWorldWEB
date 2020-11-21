@@ -17,13 +17,12 @@
                         <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
                     <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
                     <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>
-                     <a href="/myWorld/secured/user/chat/chatIndex.xhtml">Chat</a>
                 </div>
                 <div class="myContent" style="height: 75vH;">
                     <h:form>
-                        <h:commandButton value="test" action="#{createChatroom.setMyID(loginControll.authenticatedUser.id)}"/>
-                        <h:outputLabel value="#{createChatroom.myID}"/>
-                        <h:commandButton value="chat?" action="#{createChatroom.createChatroom}"/>
+                       
+                        <h:outputLabel value="create a quiz to challenge other user"/>
+                       
                     </h:form> 
                 </div>  
             </ui:define>

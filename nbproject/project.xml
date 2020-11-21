@@ -18,6 +18,14 @@
                     <file>${reference.myWorldMessages-EJB.dist}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
+                <library dirs="100">
+                    <file>${reference.myWorldChatRoom-EJB.dist}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+                <library dirs="100">
+                    <file>${reference.myworld_helperAndAuth-EJB.dist}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
             <source-roots>
@@ -40,6 +48,14 @@
                 <id>dist</id>
             </reference>
             <reference>
+                <foreign-project>myWorldChatRoom-EJB</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>build.xml</script>
+                <target>dist</target>
+                <clean-target>clean</clean-target>
+                <id>dist</id>
+            </reference>
+            <reference>
                 <foreign-project>myWorldMessages-EJB</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
@@ -49,6 +65,14 @@
             </reference>
             <reference>
                 <foreign-project>myWorldUsers-EJB</foreign-project>
+                <artifact-type>jar</artifact-type>
+                <script>build.xml</script>
+                <target>dist</target>
+                <clean-target>clean</clean-target>
+                <id>dist</id>
+            </reference>
+            <reference>
+                <foreign-project>myworld_helperAndAuth-EJB</foreign-project>
                 <artifact-type>jar</artifact-type>
                 <script>build.xml</script>
                 <target>dist</target>

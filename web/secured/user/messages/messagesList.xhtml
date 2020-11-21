@@ -8,18 +8,18 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
     <h:head>
         <meta http-equiv="refresh" content="10"/>
     </h:head>
-   <h:body style="height: 100vH;">
+    <h:body style="height: 100vH;" >
         <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                         template="../../../resources/templates/users/messages/messagesTemplate.xhtml"
                         xmlns:h="http://xmlns.jcp.org/jsf/html">
-            <ui:define name="content">
+            <ui:define name="content" >
               <div class="sidebar" style="height: auto;width: auto;">
   <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
   <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
   <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
   <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>  
 </div>
-              <div class="myContent" style="height: 75vH;">
+              <div class="myContent" style="height: 75vH;" >
                             <div class="card">
                                 <h:form id="userTable">
                                     <h:dataTable value="#{messageService.myList}" var="item" styleClass="employeeTable"
@@ -44,16 +44,28 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                                              <h:outputText value="#{item.title}"/>
                                         </h:column>
                                         <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText style="width: 100%;" value="toDelete"/><br/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.toDelete}"/>
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText style="width: 100%;" value="isRead"/><br/>
+                                            </f:facet>
+                                            <h:outputText value="#{item.isRead}"/>
+                                        </h:column>
+                                        <h:column>
                                             <f:facet name = "header">delete</f:facet>
                                             <h:commandButton class="deletebtn" value = "delete"
                                                              action = "#{messageService.deleteSelectedMessage(item.messageID)}">        
                                             </h:commandButton>
                                         </h:column>
-                                            <h:column>
+                                        <h:column>
                                             <f:facet name = "header">view</f:facet>
-                                            <h:commandLink type="submit" class="acceptbtn" style="text-decoration: none;width: 100%;" value = "view"
-                                                           action = "#{messageService.setSelectedMessage(item.messageID)}" target="_blank">        
-                                            </h:commandLink>
+                                            <h:commandButton type="submit" class="acceptbtn" style="text-decoration: none;width: 100%;" value = "view"
+                                                              action="#{messageService.myURL(item.messageID)}">        
+                                            </h:commandButton>
                                         </h:column>
                                             <f:facet name="footer">
                                                 <h:outputLabel value=" #{messageService.myList.size()} inbox found"/>
@@ -62,7 +74,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                                 </h:form> 
                             </div>
                         </div>
-                    
+                
             </ui:define>
         </ui:composition>
     </h:body>

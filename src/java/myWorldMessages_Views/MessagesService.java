@@ -28,14 +28,19 @@ import views.MessageViews_EJB;
 @Named(value="messageService")
 @SessionScoped
 public class MessagesService extends MessageViews_EJB implements Serializable{
+    private  String myURL="messageDetail target=\"_blank\"";
 @Inject
 private LoginController login;
 @EJB
 private UsersFacadeLocal usersFacade;
 
+   
+
+
     @Override
     public int getInbox() {
         getLstInbox(login.getAuthenticatedUser().getId());
+        
         return getMyList().size();
     }
 
@@ -52,6 +57,10 @@ private UsersFacadeLocal usersFacade;
             setAbsender(usersFacade.find(m.getSenderID()).getUsername());
         helper.setTitle(m.getBetreff());
         helper.setSendDate(m.getWann());
+        
+        
+        helper.setIsRead(m.getIsRead());
+        helper.setToDelete(m.getToDelete());
         myList.add(helper);
         }
         }catch(NullPointerException n){
@@ -60,12 +69,25 @@ private UsersFacadeLocal usersFacade;
         return myList;
     }
 
-    
+    public String myURL(int id){
+        setSelectedMessage(id);
+        //"messageDetail.xhtml?faces-redirect=true target=\"_blank\"";
+    return "messageDetail.xhtml?faces-redirect=true ";
+    }
  
     public String convertTime(long time){
     Date date = new Date(time);
     Format format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
     return format.format(date);
 }
-    
+
+    public String getMyURL() {
+        return myURL;
+    }
+
+    public void setMyURL(String myURL) {
+        this.myURL = myURL;
+    }
+
+     
 }

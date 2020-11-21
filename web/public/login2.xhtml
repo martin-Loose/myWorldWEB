@@ -18,13 +18,11 @@
             <h:form class="modal-content animate">
                 <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="../resources/css/avatar.png" alt="Avatar" class="avatar"/>
-          
     </div>
                 <div class="logincontainer">
                     <h:outputLabel for="uname" value="Username:"/><br/>
                     <h:inputText  id="uname" required="true"  a:placeholder="Enter Username" 
-                                  value="#{loginControll.username}"/><br/>
+                                  value="#{loginControll.username}"/><br/><br/><br/>
                     <h:outputLabel for="password" value="Password:"/><br/>
                     <h:inputSecret  id="password" required="true"  a:placeholder="Enter Password"
                                   value="#{loginControll.passwort}"/><br/><br/>

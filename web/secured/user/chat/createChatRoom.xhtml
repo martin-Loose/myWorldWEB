@@ -10,7 +10,7 @@
     </h:head>
    
         <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                        template="../../../resources/templates/users/messages/messagesTemplate.xhtml"
+                         template="../../../resources/templates/users/usersTemplate.xhtml"
                         xmlns:h="http://xmlns.jcp.org/jsf/html">
             <ui:define name="content">
              <div class="sidebar" style="height: auto;width: auto;">
@@ -25,14 +25,15 @@
                                     
                                     <h:panelGroup style="width: 150px;height: 300px;">
                                         <h:messages  style="color: red;background-color: wheat;" globalOnly="true" /><br/>
-                                        <h:outputLabel value="Empfaenger: "/><h:inputText value="#{createMessageController.receiver}"/><br/>
-                                        <h:inputText value="#{createMessageController.titel}"   a:placeholder="Titel" style="width: 120px;"/><br/>
-                                        <h:inputTextarea value="#{createMessageController.message}" 
-                                                         style="width: 120px;height: 120px;" >
-                                            <f:ajax event="keyup" listener="#{createMessageController.test}" render="restzeichen"/>
+                                       <h:inputText value="#{createChatroom.chatRoomName}" a:placeholder="Room Name"/><br/>
+                                        <h:inputTextarea value="#{createChatroom.theme}" 
+                                                         style="width: 120px;height: 120px;" a:placeholder="Theme" >
+                                            <f:ajax event="keyup" listener="#{createChatroom.test}" render="restzeichen"/>
                                         </h:inputTextarea> <br/>
-                                        <h:outputLabel id="restzeichen" value="Zeichen verfuegbar: #{createMessageController.zeichen}"/><br/>
-                                        <h:commandButton value="Send" action="#{createMessageController.prepareCreateMessage}"/>
+                                        
+                                        <h:outputLabel id="restzeichen" value="Zeichen verfuegbar: #{createChatroom.zeichen}"/><br/>
+                                        <h:inputText value="#{createChatroom.password}" a:placeholder="password"/><br/>
+                                        <h:commandButton value="Create" action="#{createChatroom.prepareChatCreate}"/>
                                     </h:panelGroup>
                                 </h:form>  
                             </div>
