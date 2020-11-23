@@ -26,28 +26,30 @@
                                                 <img src="../../resources/css/avatar.png" alt="Avatar" style="height: 100px;width: 100px;"/>
                                             </f:facet>
                                             <f:facet name="header">
-                                                <h:outputLabel value="Userdetails:"/>
+                                                <h:outputLabel value="Chatroom Details:"/>
                                             </f:facet>
-                                            <h:outputLabel value="Username:"/>
+                                            <h:outputLabel value="Roomname:"/>
                                             <h:outputLabel value=" #{chatroomService.selectedChatroom.name}"/>
-                                            <h:outputLabel value="Email:"/>
+                                            <h:outputLabel value="Theme:"/>
                                             <h:outputLabel value=" #{chatroomService.selectedChatroom.theme}"/>
-                                            <h:outputLabel value="Public:"/>
+                                            <h:outputLabel value="isPublic:"/>
                                             <h:outputLabel value=" #{chatroomService.selectedChatroom.isPublic}"/>
-                                            <h:outputLabel value="Closed:"/>
+                                            <h:outputLabel value="isClosed:"/>
                                             <h:outputLabel value=" #{chatroomService.selectedChatroom.isClosed}"/>
+                                            <h:outputLabel value="isPrivate:"/>
+                                            <h:outputLabel value=" #{chatroomService.selectedChatroom.isPrivate}"/>
+                                            
                                             <f:facet name="footer">
                                                 <h:panelGrid id="buttons" columns="3">
-                                                    <h:commandButton value="send Message" action="#{createMessageController
-                                                                                                    .prepareMessage(loginControll.authenticatedUser.id
-                                                                                                    ,userService.selectedUser.id
-                                                                                                    ,userService.selectedUser.username)}">
+                                                    <h:commandButton value="joinRequest" 
+                                                                     action="#{createMessageController.prepareChatRequest(loginControll.authenticatedUser.id
+                                                                             ,chatroomService.selectedChatroom.creatorID, chatroomService.selectedChatroom.name)}"
+                                                                     >
                                                       
                                                     </h:commandButton>
-                                                    <h:commandButton value="send Request" id="createRequst"
-                                                                     action="#{createREquestController.createRequest
-                                                                            (loginControll.authenticatedUser.id,userService.selectedUser.id)}"/>
-                                                    <h:commandButton value="Back" action="userList.xhtml"/>
+                                                    <h:commandButton value="join" id="createRequst"
+                                                                     action="#{chatroomService.joinChat()}"/>
+                                                    <h:commandButton value="Back" action="chatRoomList.xhtml"/>
                                                 </h:panelGrid>
                                             </f:facet>
                                         </h:panelGrid>

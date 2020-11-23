@@ -20,9 +20,15 @@
                 </div>
                 <div class="myContent" style="height: 75vH;">
                     <h:form>
-                        <h:commandButton value="test" action="#{createChatroom.setMyID(loginControll.authenticatedUser.id)}"/>
-                        <h:outputLabel value="#{createChatroom.myID}"/>
-                        <h:commandButton value="chat?" action="#{createChatroom.createChatroom}"/>
+                       todo
+                       - set private/password for chatroom
+                       - edit settings for room/delete room
+                       - send joinrequest / invite for private room
+                       - remove users from privateroom
+                       
+                       = postings working but ugly - need styling and profiling *g
+                       = possibility to join multiple rooms (roomservice instantiate?sessionmap?)
+                       
                     </h:form> 
                 </div>  
             </ui:define>

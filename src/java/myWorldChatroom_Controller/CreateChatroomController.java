@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package myWorld_Chatroom_Controller;
+package myWorldChatroom_Controller;
 
 import controller.CreateChatroomController_EJB;
 import entities.Chatroom_;
@@ -25,9 +25,9 @@ public class CreateChatroomController extends CreateChatroomController_EJB imple
    
   public void prepareChatCreate() throws UnsupportedEncodingException, NoSuchAlgorithmException{
   if(getPassword().length()>0){
-      setPassword(AuthUtil.encodeSHA256(getPassword()));
-      createChatroom();
+      setPassword(AuthUtil.encodeSHA256(getPassword()));     
   }
+   createChatroom();
   }
    
 }

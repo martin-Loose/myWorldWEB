@@ -41,6 +41,21 @@ public class CreateMessageController extends CreateMessageController_EJB impleme
       } 
     }
     
+     @Override
+     public String prepareChatRequest(int myID, int receiverID,String chatroomName){
+     if(usersFacade.findByName(getReceiver())==null){
+           FacesContext.getCurrentInstance().addMessage(null,
+                             new FacesMessage(FacesMessage.SEVERITY_FATAL, "Receiver not found", "Receiver not exist"));
+      }else{
+          setMyID(login.getAuthenticatedUser().getId());
+          setReceiverID(usersFacade.findByName(getReceiver()).getId());
+          setReceiverID(receiverID);
+    setTitel(chatroomName);
+          send();
+          
+      } 
+     return null;
     
+    }
     
 }
