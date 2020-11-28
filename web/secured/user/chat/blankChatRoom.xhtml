@@ -12,39 +12,44 @@
         <ui:define name="content" >
             <h:head>
                 <!--        <meta http-equiv="refresh" content="5"/>-->
-
+                <f:metadata>
+                    <f:viewParam name="chatID" value="#{chatID}"/>
+                    <f:viewParam name="chatName" value="#{chatName}"/>
+                </f:metadata>
 
             </h:head>
-            <h:body style="height: 100vH;" onload="#{chatMessageService.setChatID(chatroomService.selectedChatroom.id)}">
+            <h:body style="height: 100vH;" onload="#{chatMessageService.join()}">
                 <div class="sidebar" style="height: auto;width: auto;">
                     <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
                     <a href="/myWorld/secured/user/chat/chatRoomList.xhtml">Chats</a>
-                    
                 </div>
                 <div class="myContent" style="overflow: auto;background-color: #f5d76e;padding-left: 5px;">
-                    <h:form><h:outputLabel value="#{chatroomService.selectedChatroom.name}"/><br/>
+                    <h:form>
+                        <h:outputLabel value="#{chatName}"/><br/>
                         <h:inputText value="#{createChatMessageController.myMessage}" size="200" style="width: 300px;"
                                      validatorMessage="illegal sign" a:placeholder="your Comment max 200">
                             <f:validateRegex pattern="[a-zA-Z0-9 ,.-]*" />
                         </h:inputText>
-                        <h:commandButton value="write" action="#{createChatMessageController.writeMessage(loginControll.authenticatedUser.username,chatroomService.selectedChatroom.id)}"/>
-                    
-                    <ui:repeat value="#{chatMessageService.thisRoom}" var="item">
-                       
-                         <hr/><h:outputLabel value="#{item.senderName} wrote at "> 
-                              <h:outputText value="#{item.wann}">
-                                  <f:convertDateTime pattern="HH:mm" /></h:outputText>
-                              </h:outputLabel><hr/>
-                         <h:inputTextarea value="#{item.chatMessage}" cols="50" rows="4" 
-                                          style="overflow: auto;" readonly="true"/>   
-                           
-                      
-                    </ui:repeat></h:form>  
+                        <h:commandButton value="write" action="#{createChatMessageController.writeMessage(loginControll.authenticatedUser.username,chatID)}">
+                            <f:param name="chatID" value="#{chatMessageService.chatID}"/>
+                            <f:param name="chatName" value="#{chatMessageService.chatName}"/>
+                        </h:commandButton>
+                        <div style="width: auto;height: 400px;overflow-x: auto;overflow-y: auto;">
+                            <ui:repeat value="#{chatMessageService.thisRoom}" var="item">
+                                <div style="background-color: #f2f1ef;width: 400px;height: auto; padding: 3px; border: 5px solid gray;margin: 0;overflow: auto;">
+                                    <h:outputText value="#{item.wann}">
+                                        <f:convertDateTime pattern="HH:mm" />
+                                    </h:outputText><h:outputLabel value=" from: #{item.senderName}:"/><br/>
+                                    <h:inputTextarea value="#{item.chatMessage}" readonly="true" 
+                                                     style="overflow: auto;height: 100px;width: 300px;">
+                                    </h:inputTextarea>
+                                </div> <br/> 
+                            </ui:repeat>
+                        </div>
+                    </h:form>  
                 </div>
-                   
             </h:body>
         </ui:define>
     </ui:composition>
-
 </html>
 

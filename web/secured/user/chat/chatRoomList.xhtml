@@ -28,27 +28,29 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                                             <f:ajax execute="@form"  render="userTable"/>
                                         </h:commandButton>
                                         </div>
-                        <h:dataTable value="#{chatroomService.myList}" var="item" styleClass="employeeTable"
-                                                 headerClass="employeeTableHeader"
-                                                 rowClasses="employeeTableOddRow,employeeTableEvenRow" footerClass="employeeTableHeader">
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText style="width: 100%;" value="Name"/><br/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.name}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name = "header">view</f:facet>
-                                            <h:commandButton style="width: 100%;background-color: #e4f1fe;color: black;" value = "view"
-                                                             action = "#{chatroomService.setSelectedChatroom(item)}">        
-                                            </h:commandButton>
-                                        </h:column>
-                                            <f:facet name="footer">
-                                                <h:outputLabel value="UserList #{chatroomService.myList.size()} Chatrooms found"/><h:outputLabel value="UserList #{userService.userList.size()} Users found"/>
-                                            </f:facet>
-                                    </h:dataTable>
-                                </h:form> 
-                    </div>
+<h:dataTable value="#{newChatroomService.myNewListOfPublicRooms}" var="item" styleClass="employeeTable"
+              headerClass="employeeTableHeader"
+              rowClasses="employeeTableOddRow,employeeTableEvenRow" footerClass="employeeTableHeader">
+<h:column>
+ <f:facet name="header">
+ <h:outputText style="width: 100%;" value="Name"/><br/>
+ </f:facet>
+<h:outputText value="#{item.name}"/>
+ </h:column>
+ <h:column>
+ <f:facet name = "header">Details</f:facet>
+<h:link styleClass="button" type="button/submit" outcome="chatRoomDetails.xhtml" value="view"
+   includeViewParams="true" target="_blank" style="color: #000000;">  
+<f:param  name="chatName" value="#{item.name}" />  
+<f:param  name="chatID" value="#{item.id}" />  
+</h:link>
+</h:column>
+<f:facet name="footer">
+<h:outputLabel value="#{newChatroomService.myNewListOfPublicRooms.size()} Chatrooms found"/>
+</f:facet>
+</h:dataTable>
+</h:form> 
+</div>
 
             </ui:define>
         </ui:composition>

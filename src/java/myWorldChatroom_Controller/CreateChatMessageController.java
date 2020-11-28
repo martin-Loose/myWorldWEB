@@ -6,7 +6,9 @@
 package myWorldChatroom_Controller;
 
 import controller.ChatCreatePosting_EJB;
+import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -14,7 +16,7 @@ import javax.inject.Named;
  * @author marlo0212
  */
 @Named(value="createChatMessageController")
-@RequestScoped
-public class CreateChatMessageController extends ChatCreatePosting_EJB{
+@ViewScoped
+public class CreateChatMessageController extends ChatCreatePosting_EJB implements Serializable{
     
 }
