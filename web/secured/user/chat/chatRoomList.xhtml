@@ -28,7 +28,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                                             <f:ajax execute="@form"  render="userTable"/>
                                         </h:commandButton>
                                         </div>
-<h:dataTable value="#{newChatroomService.myNewListOfPublicRooms}" var="item" styleClass="employeeTable"
+<h:dataTable value="#{newChatroomService.myNewListOfRooms}" var="item" styleClass="employeeTable"
               headerClass="employeeTableHeader"
               rowClasses="employeeTableOddRow,employeeTableEvenRow" footerClass="employeeTableHeader">
 <h:column>
@@ -37,16 +37,47 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
  </f:facet>
 <h:outputText value="#{item.name}"/>
  </h:column>
+    <h:column>
+ <f:facet name="header">
+ <h:outputText style="width: 100%;" value="public"/><br/>
+ </f:facet>
+        <h:outputText value="#{item.isPublic}"/>
+ </h:column>
+    <h:column>
+ <f:facet name="header">
+ <h:outputText style="width: 100%;" value="private"/><br/>
+ </f:facet>
+<h:outputText value="#{item.isPrivate}"/>
+ </h:column>
  <h:column>
  <f:facet name = "header">Details</f:facet>
-<h:link styleClass="button" type="button/submit" outcome="chatRoomDetails.xhtml" value="view"
-   includeViewParams="true" target="_blank" style="color: #000000;">  
+<h:link styleClass="button" type="button/submit" outcome="publicChatroomDetails.xhtml" value="view publicRoom"
+        includeViewParams="true" target="_blank" style="color: #000000;" rendered="#{item.isPublic}">  
+<f:param  name="chatName" value="#{item.name}" />  
+<f:param  name="chatID" value="#{item.id}" />  
+</h:link>
+ <h:link styleClass="button" type="button/submit" outcome="privateChatroomDetails.xhtml" value="view privateRoom"
+         includeViewParams="true" target="_blank" style="color: #000000;" rendered="#{item.isPrivate}">  
 <f:param  name="chatName" value="#{item.name}" />  
 <f:param  name="chatID" value="#{item.id}" />  
 </h:link>
 </h:column>
+     <h:column>
+ <f:facet name = "header">Settings</f:facet>
+<h:link styleClass="button" type="button/submit" outcome="editChatRoom.xhtml" value="edit"
+   includeViewParams="true" target="_blank" style="color: #000000;"  rendered="#{item.creatorID == loginControll.authenticatedUser.id}">  
+<f:param  name="chatName" value="#{item.name}" />  
+<f:param  name="chatID" value="#{item.id}" /> 
+<f:param name="myID" value="#{loginControll.authenticatedUser.id}"/>
+</h:link>
+</h:column>
+    <h:column >
+ <f:facet name = "header" >delete</f:facet>
+ <h:commandButton value="delete" rendered="#{item.creatorID == loginControll.authenticatedUser.id}"
+                  action="#{updateChatroomSettingsController.removeRoom(item.id)}"/>
+</h:column>
 <f:facet name="footer">
-<h:outputLabel value="#{newChatroomService.myNewListOfPublicRooms.size()} Chatrooms found"/>
+<h:outputLabel value="#{newChatroomService.myNewListOfRooms.size()} Chatrooms found"/>
 </f:facet>
 </h:dataTable>
 </h:form> 

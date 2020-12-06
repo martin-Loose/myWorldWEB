@@ -6,6 +6,9 @@
 package myWorldChatroom_Views;
 
 import entities.Chatroom;
+import helperClass.AuthUtil;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,6 +25,10 @@ import views.ChatroomViews_EJB;
 @Named("newChatroomService")
 @RequestScoped
 public class newChatroomService extends ChatroomViews_EJB {
+
+
+
+
 
 } 
 

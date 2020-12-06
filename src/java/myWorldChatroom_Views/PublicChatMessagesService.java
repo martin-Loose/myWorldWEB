@@ -6,17 +6,20 @@
 package myWorldChatroom_Views;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import views.ChatMessagesViews_EJB;
+import views.PublicChatMessagesViews_EJB;
 
 /**
  *
  * @author marlo0212
  */
-@Named(value="chatMessageService")
+@Named(value="publicChatMessageService")
 @ViewScoped
-public class chatMessagesService extends ChatMessagesViews_EJB implements Serializable{
-    
+public class PublicChatMessagesService extends PublicChatMessagesViews_EJB implements Serializable{
+   
+
+
 }
