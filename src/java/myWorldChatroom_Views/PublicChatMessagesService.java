@@ -6,8 +6,6 @@
 package myWorldChatroom_Views;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import views.PublicChatMessagesViews_EJB;
@@ -19,7 +17,14 @@ import views.PublicChatMessagesViews_EJB;
 @Named(value="publicChatMessageService")
 @ViewScoped
 public class PublicChatMessagesService extends PublicChatMessagesViews_EJB implements Serializable{
-   
+  private int usersOnline;
+
+
+    public void setUsersOnline(int usersOnline) {
+        this.usersOnline = usersOnline;
+    }
+  
+  
 
 
 }

@@ -24,31 +24,43 @@
                     <a href="/myWorld/secured/user/chat/chatRoomList.xhtml">Chats</a>
                 </div>
                 <div class="myContent" style="overflow: auto;background-color: #f5d76e;padding-left: 5px;">
-                    <h:form>
-                        <h:outputLabel value="#{chatName}"/><br/>
-                        <h:inputText value="#{createChatMessageController.myMessage}" size="200" style="width: 300px;"
-                                     validatorMessage="illegal sign" a:placeholder="your Comment max 200">
-                            <f:validateRegex pattern="[a-zA-Z0-9 ,.-]*"/>
-                            <f:ajax event="keyup" listener="#{createChatMessageController.test}" render="restzeichen"/>
-                        </h:inputText><br/>
-                        <h:outputLabel id="restzeichen" value="#{createChatMessageController.rest} signs left"/><br/>
-                        <h:commandButton value="write" action="#{createChatMessageController.writeMessage(loginControll.authenticatedUser.username,chatID)}">
-                            <f:param name="chatID" value="#{publicChatMessageService.chatID}"/>
-                            <f:param name="chatName" value="#{publicChatMessageService.chatName}"/>
-                        </h:commandButton>
-                        <div style="width: auto;height: 400px;overflow-x: auto;overflow-y: auto;">
-                            <ui:repeat value="#{publicChatMessageService.thisRoom}" var="item">
-                                <div style="background-color: #f2f1ef;width: 400px;height: auto; padding: 3px; border: 5px solid gray;margin: 0;overflow: auto;">
-                                    <h:outputText value="#{item.wann}">
-                                        <f:convertDateTime pattern="HH:mm" />
-                                    </h:outputText><h:outputLabel value=" from: #{item.senderName}:"/><br/>
-                                    <h:inputTextarea value="#{item.chatMessage}" readonly="true" 
-                                                     style="overflow: auto;height: 80px;width: 300px;">
-                                    </h:inputTextarea>
-                                </div> <br/> 
-                            </ui:repeat>
+                    <div class="row">
+                        <div class="leftcolumn">
+                            <h:form>
+                                <h:outputLabel value="#{chatName}"/><br/>
+                                <h:inputText value="#{createChatMessageController.myMessage}" size="200" style="width: 300px;"
+                                             validatorMessage="illegal sign" a:placeholder="your Comment max 200">
+                                    <f:validateRegex pattern="[a-zA-Z0-9 ,.-]*"/>
+                                    <f:ajax event="keyup" listener="#{createChatMessageController.test}" render="restzeichen"/>
+                                </h:inputText><br/>
+                                <h:outputLabel id="restzeichen" value="#{createChatMessageController.rest} signs left"/><br/>
+                                <h:commandButton value="write" action="#{createChatMessageController.writeMessage(loginControll.authenticatedUser.username,chatID)}">
+                                    <f:param name="chatID" value="#{publicChatMessageService.chatID}"/>
+                                    <f:param name="chatName" value="#{publicChatMessageService.chatName}"/>
+                                </h:commandButton>
+                                <div style="width: auto;height: 400px;overflow-x: auto;overflow-y: auto;">
+                                    <ui:repeat value="#{publicChatMessageService.thisRoom}" var="item">
+                                        <div style="background-color: #f2f1ef;width: 400px;height: auto; padding: 3px; border: 5px solid gray;margin: 0;overflow: auto;">
+                                            <h:outputText value="#{item.wann}">
+                                                <f:convertDateTime pattern="HH:mm" />
+                                            </h:outputText><h:outputLabel value=" from: #{item.senderName}:"/><br/>
+                                            <h:inputTextarea value="#{item.chatMessage}" readonly="true" 
+                                                             style="overflow: auto;height: 80px;width: 300px;">
+                                            </h:inputTextarea>
+                                        </div> 
+                                    </ui:repeat>
+                                </div>
+                            </h:form>  
                         </div>
-                    </h:form>  
+                        <div class="rightcolumn">
+                            <h:form>
+                                <h:commandButton value="tets" action="#{myNEwClass.createLists(loginControll.authenticatedUser.username)}">
+                                    <f:param name="chatID" value="#{publicChatMessageService.chatID}"/>
+                                    <f:param name="chatName" value="#{publicChatMessageService.chatName}"/>
+                                </h:commandButton>
+                            </h:form>
+                        </div>
+                    </div>
                 </div>
             </h:body>
         </ui:define>
