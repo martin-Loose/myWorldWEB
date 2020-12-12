@@ -23,8 +23,8 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
                     <h:form id="userTable" class="card">
                                     <div>
                                         <h:outputLabel value="Filter List"/>
-                                        <h:inputText value="#{userService.searchString}" a:placeholder="Enter Searchstring"/>
-                                        <h:commandButton value="Search" action="#{userService.findbyStart}"> 
+                                        <h:inputText value="#{newChatroomService.searchString}" a:placeholder="Filter List by Roomname contains searchString"/>
+                                        <h:commandButton value="Search" action="#{newChatroomService.findbyStart}"> 
                                             <f:ajax execute="@form"  render="userTable"/>
                                         </h:commandButton>
                                         </div>
