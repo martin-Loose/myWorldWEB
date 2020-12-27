@@ -1,8 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
         <title>ToDO</title>
         <style>
             div{background-color: lightgrey;
@@ -23,11 +25,56 @@
             .laterer{
                 color: #e87e04;
             }
+            img {
+  max-width: 25%;
+  height: auto;
+}
         </style>
+        <script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ };
+ reader.readAsDataURL(event.target.files[0]);
+ 
+}
+</script>
     </h:head>
-    <h:body>
+    
+    <h:body onload="#{getPath2PicService.setUser(31)}" >
+        <h:form>
+          
+        </h:form>
         
-        <h:graphicImage id="image-id" name="user-image" url="#{myNEwClass.myPic}"   
+        
+        
+        
+        
+        <h:form enctype="multipart/form-data">
+        <div id="wrapper">
+           
+                 <h:inputFile id="fileselect1"   value="#{uploadController.image}" onchange="preview_image(event)">
+                     <f:ajax event="change" listener="#{uploadController.test()}" />
+                 </h:inputFile>
+                    <img id="output_image"/>
+                    <h:commandButton id="upload" value="go" action="#{uploadController.doUpload('otto','Avatar')}"> 
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton><br/>
+                    <img id="testpic" alt="test2" src="#{getPath2PicService.path2Avatar}" style="width: 30%;height: auto;border: 1px solid;"/><br/>
+
+</div>
+       <!--     <h:graphicImage url="http://localhost/marloo/1.bmp"/>-->
+       
+           
+            
+        </h:form>
+        
+      <!--
+        <h:graphicImage id="image-id" name="user-image" url="#"   
     height="50px" width="50px" alt="Image not found"></h:graphicImage>  
         <h1 style="text-align: center;">TODO</h1>
         <p>Legend:</p>
@@ -61,11 +108,11 @@
             </ul><hr></hr>
         </div>
         <h:form>
-            <h:commandButton value="test" action="#{myNEwClass.createWhois}"/>
+            <h:commandButton value="test" action="#"/>
         </h:form>
         .. TODO wichtig:
         private room join muss noch überarbeitet werden - password eingabe und codierung - abgleich ob identisch
-        .. extra controller
+        .. extra controller-->
 </h:body>
 </html>
 

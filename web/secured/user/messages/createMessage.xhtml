@@ -13,13 +13,13 @@
                         template="../../../resources/templates/users/messages/messagesTemplate.xhtml"
                         xmlns:h="http://xmlns.jcp.org/jsf/html">
             <ui:define name="content">
-             <div class="sidebar" style="height: auto;width: auto;">
-  <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-  <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
-  <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
-  <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>  
-</div>
-              <div class="myContent" style="height: 75vH;">
+      <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/messages/messagesList.xhtml">Inbox</a></li>
+                 <li><a  href="/myWorld/secured/user/messages/createMessage.xhtml">Write</a></li>
+                </ul>
+
+                <div class="myContent" style="height: 100vH;background-color: #ddd;">
+                
                             <div class="card">
                                 <h:form id="messageCreate">  
                                     

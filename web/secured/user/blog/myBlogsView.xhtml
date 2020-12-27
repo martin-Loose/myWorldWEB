@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="../../../resources/templates/users/usersTemplate.xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html">
+            <ui:define name="content" >
+                <h:body style="height: 100vH;" onload="#{blogService.setSearchID(loginControll.authenticatedUser.id)}">
+               <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/blog/BlogView.xhtml">BlogView</a></li>
+                 <li><a  href="/myWorld/secured/user/blog/myBlogsView.xhtml">myBlogs</a></li>
+   <li><a  href="/myWorld/secured/user/blog/createBlogBeitrag.xhtml">Create</a></li>             
+   </ul>
+                <div class="myContent" style="height: 75vH;">
+                    <h:form id="userTable" class="card">
+                        
+                        <div class="w3-container w3-center">
+                            <div class="w3-card-4" style="width:50%">
+                                <ui:repeat value="#{blogService.myBlog}" var="item">
+                                    #{blogService.doJob(item.creatorID)};
+                                    <div class="card">
+                                        <h2> <h:outputLabel value="#{item.titel}"/></h2>
+                                        <h:outputLabel value="#{item.createdAt} from #{blogService.poster}" style="font-size: 11px;text-align: left;"/>
+                                        <div class="fakeimg">
+                                            <img id="testpic" src="http://grottenolm.hopto.org:8080/myWorld/#{blogService.poster}/Blog/#{item.titel}/#{item.mypicture}"
+                                          alt="no avatar" style="max-width: 50%;height: auto;border: 1px solid;"/>
+                                         
+                                        </div>
+                                    </div>
+                                    <p>#{item.mytext}</p>
+                                    <div class="w3-container w3-center"><br/>
+                                        <h:commandButton class="w3-button w3-deep-orange" style="width: 100%;color: black;" value = "view"
+                                                         action = "#{blogService.setSelectedBlog(item)}">        
+                                        </h:commandButton>
+                                    </div><hr/>
+                                </ui:repeat>
+                            </div>
+                        </div>                                                                                         
+                    </h:form> 
+                </div> 
+                     </h:body>
+            </ui:define>
+        </ui:composition>
+   
+</html>
+

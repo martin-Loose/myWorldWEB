@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    template="../../../resources/templates/users/usersTemplate.xhtml"
+                    xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <ui:define name="content">
+            <h:head>
+
+            </h:head>
+
+            <h:body onload="#{editUserBaseDataController.setUser(loginControll.authenticatedUser.id)}">
+        <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/users/EditUserDetails.xhtml">Edit your Data</a></li>
+                 <li><a  href="/myWorld/secured/user/users/userList.xhtml">UserList</a></li>
+                </ul>
+
+                <div class="myContent" style="height: 100vH;background-color: #ddd;">
+               
+                    <div class="card">
+                         <h:form enctype="multipart/form-data">
+        <div id="wrapper">
+           
+                 <h:inputFile id="fileselect1"   value="#{uploadController.image}" onchange="preview_image(event)">
+                     <f:ajax event="change" listener="#{uploadController.test()}" />
+                 </h:inputFile><br/>
+            <img id="output_image" style="max-width: 30%;"/><br/>
+                    <h:commandButton id="upload" value="add avatar" action="#{uploadController.doUpload(loginControll.authenticatedUser.username,'Avatar')}"> 
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandButton><br/>
+                   
+        </div></h:form>
+                        <h:form id="formUserInput">           
+                            <h:panelGroup id="A1">
+                                <div style="text-align:  center">
+                                    <h:outputLabel value="Edit your Basedata"/><br/>
+                                </div>
+                                <div class="fakeimg">
+                                    <img id="testpic2" alt="no avatar found" 
+                                         src="http://grottenolm.hopto.org:8080/myWorld/#{editUserBaseDataController.user.username}/Avatar/#{editUserBaseDataController.user.avatar}" 
+                                         style="width: 30%;height: auto;border: 1px solid;"/><br/>
+                                  
+                                </div>
+                                <h:outputLabel value="Username:"/><br/>
+                                <h:outputLabel value="#{editUserBaseDataController.user.username}"/><br/>
+                                <h:outputLabel value="#{editUserBaseDataController.user.email}"/><br/>
+                                <h:commandButton rendered="#{!editUserBaseDataController.changeEmail}" value="change Email"
+                                                 action="#{editUserBaseDataController.setChangeEmail(true)}"/><br/>
+                                <h:commandButton rendered="#{editUserBaseDataController.changeEmail}" value="cancel change Email" 
+                                                 action="#{editUserBaseDataController.setChangeEmail(false)}">
+                                   
+                                </h:commandButton><br/>
+                                <h:panelGroup rendered="#{editUserBaseDataController.changeEmail}">
+                                    <h:inputText  id="email" 
+                                                  value="#{editUserBaseDataController.email}" required="true" 
+                                                  requiredMessage="Email fehlt" validatorMessage="Email unvollstaendig oder enthaelt unerlaubte Zeichen" a:placeholder="Enter your Email">
+                                        <f:validateRegex 
+                                            pattern="([_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[\p{L}\p{M}\p{N}.-]*(\.[\p{L}\p{M}]{2,})$)?" for="email" />
+                                    </h:inputText><br/>
+                                    <h:message for="email"  style="color: red;"/><br/>
+                                </h:panelGroup>
+
+                                <h:commandButton rendered="#{!editUserBaseDataController.changePassword}" value="change Password" action="#{editUserBaseDataController.setChangePassword(true)}"/><br/>
+                                <h:commandButton rendered="#{editUserBaseDataController.changePassword}" value="Cancel" action="#{editUserBaseDataController.setChangePassword(false)}"/><br/>
+                                <h:inputSecret rendered="#{editUserBaseDataController.changePassword}" id="passwort1" value="#{editUserBaseDataController.password}"
+                                                redisplay="true" 
+                                               a:placeholder="Enter your Password"
+                                               validatorMessage="Passwort mindestens 1 Klein,1 Grossbuchstabe,1 Zahl,min. 6 Zeichen, max 40 Zeichen">
+                                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,40})" />       
+                                </h:inputSecret><br/>
+                                
+                                <h:outputLabel value="confirm Passwort" rendered="#{editUserBaseDataController.changePassword}"/><br/>
+                                <h:inputSecret id="pwd2" rendered="#{editUserBaseDataController.changePassword}"
+                                                redisplay="true"
+                                               validatorMessage="Passwort mindestens 1 Klein, 1 Grossbuchstabe,1 Zahl,min. 6 Zeichen, max 40 Zeichen"
+                                               value="#{editUserBaseDataController.confirmPassword}" a:placeholder="Confirm your Password">
+                                    <f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,40})" />                         
+                                </h:inputSecret><br/>
+                                <h:commandButton type="submit" class="registerbtn" value="Go" 
+                                                 action="#{editUserBaseDataController.updateUserData}">
+                                    <f:param name="userID" value="#{loginControll.authenticatedUser.id}"/>
+
+                                </h:commandButton>
+                            </h:panelGroup>
+                        </h:form>
+                        <hr/>
+                    </div> </div>  
+                 <script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ };
+ reader.readAsDataURL(event.target.files[0]);
+ 
+}
+</script>
+            </h:body>    
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

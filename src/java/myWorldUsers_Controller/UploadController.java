@@ -5,7 +5,7 @@
  */
 package myWorldUsers_Controller;
 
-import controller.create.CreateUserController_EJB;
+import controller.upload.UploadController_EJB;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -14,8 +14,8 @@ import javax.inject.Named;
  *
  * @author marlo0212
  */
-@Named(value="createUser")
+@Named(value="uploadController")
 @SessionScoped
-public class CreateUserController extends CreateUserController_EJB implements Serializable{
+public class UploadController extends UploadController_EJB implements Serializable {
     
 }

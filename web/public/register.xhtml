@@ -12,8 +12,8 @@
          <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="../resources/templates/public/publicTemplate.xhtml">
 
-     <ui:define name="content" class="center_content">
-         <div class="container">
+     <ui:define name="content" class="content">
+        <div class="myContent" style="height: 85vH;">
            
         <h:form id="formUserInput">           
             <h:panelGroup id="A1">
@@ -52,7 +52,7 @@
                                showDetail="true" /><br/>
                 <h:commandButton type="submit" class="registerbtn" value="Go" 
                                  action="#{createUser.createUser}"/>
-            <div class="container signin">
+                <div class="container signin" style="height: auto;width: 100%;">
     <p>Already have an account? <a href="/myWorld/public/login2.xhtml">Sign in</a>.</p>
   </div>
             </h:panelGroup>

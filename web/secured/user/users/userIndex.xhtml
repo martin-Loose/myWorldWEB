@@ -5,29 +5,58 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:body style="height: 100vH;">
-        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                        template="../../../resources/templates/users/usersTemplate.xhtml"
-                        xmlns:h="http://xmlns.jcp.org/jsf/html">
-            <ui:define name="content" >
-                <div class="sidebar" style="height: auto;width: auto;">
-                    <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-                    <a href="/myWorld/secured/user/users/userList.xhtml">Users</a>
-                   <a href="/myWorld/secured/user/messages/messagesList.xhtml">Inbox: #{messageService.inbox}</a>
-                        <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
-                    <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
-                    <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>
-                     <a href="/myWorld/secured/user/chat/chatIndex.xhtml">Chat</a>
-                </div>
-                <div class="myContent" style="height: 75vH;">
-                    <h:form>
-                        <h:commandButton value="test" action="#{createChatroom.setMyID(loginControll.authenticatedUser.id)}"/>
-                        <h:outputLabel value="#{createChatroom.myID}"/>
-                        <h:commandButton value="chat?" action="#{createChatroom.createChatroom}"/>
-                    </h:form> 
-                </div>  
-            </ui:define>
-        </ui:composition>
-    </h:body>
+
+    <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                    template="../../../resources/templates/users/usersTemplate.xhtml"
+                    xmlns:h="http://xmlns.jcp.org/jsf/html">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <ui:define name="content" >
+            <h:head>
+                <script type='text/javascript'>
+                    function preview_image(event)
+                    {
+                        var reader = new FileReader();
+                        reader.onload = function ()
+                        {
+                            var output = document.getElementById('output_image');
+                            output.src = reader.result;
+                        };
+                        reader.readAsDataURL(event.target.files[0]);
+                    }
+                </script>
+                <style>
+                    body
+                    {
+                        width:100%;
+                        margin:0 auto;
+                        padding:0px;
+                        font-family:helvetica;
+                        background-color:#0B3861;
+                    }
+                    #wrapper
+                    {
+                        text-align:center;
+                        margin:0 auto;
+                        padding:0px;
+                        width:995px;
+                    }
+                    #output_image
+                    {
+                        max-width:300px;
+                    }
+                </style>
+            </h:head>
+            <h:body onload="#{getPath2PicService.setUser(loginControll.authenticatedUser.id)}" 
+                    style="height: 100vH;background-color: #ddd;" > 
+           <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/users/EditUserDetails.xhtml">Edit your Data</a></li>
+                 <li><a  href="/myWorld/secured/user/users/userList.xhtml">UserList</a></li>
+                </ul>
+
+                
+            </h:body> 
+        </ui:define>
+    </ui:composition>
 </html>
 

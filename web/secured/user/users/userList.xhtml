@@ -2,57 +2,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta http-equiv="refresh" content="10"/>
     </h:head>
-    <h:body>
+   
         <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                         template="../../../resources/templates/users/usersTemplate.xhtml"
                         xmlns:h="http://xmlns.jcp.org/jsf/html">
-          <ui:define name="content">
- <div class="sidebar" style="height: auto;width: auto;">
-  <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-  <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
-  <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
-  <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>  
-</div>
-              <div class="myContent" style="height: 75vH;">
-                    <h:form id="userTable" class="card">
-                                    <div>
-                                        <h:outputLabel value="Filter List"/>
-                                        <h:inputText value="#{userService.searchString}" a:placeholder="Enter Searchstring"/>
-                                        <h:commandButton value="Search" action="#{userService.findbyStart}"> 
-                                            <f:ajax execute="@form"  render="userTable"/>
-                                        </h:commandButton>
-                                        </div>
-                                    <h:dataTable value="#{userService.userList}" var="item" styleClass="employeeTable"
-                                                 headerClass="employeeTableHeader"
-                                                 rowClasses="employeeTableOddRow,employeeTableEvenRow" footerClass="employeeTableHeader">
-                                        <h:column>
-                                            <f:facet name="header">
-                                                <h:outputText style="width: 100%;" value="Username"/><br/>
-                                            </f:facet>
-                                            <h:outputText value="#{item.username}"/>
-                                        </h:column>
-                                        <h:column>
-                                            <f:facet name = "header">view</f:facet>
-                                            <h:commandButton style="width: 100%;background-color: #e4f1fe;color: black;" value = "view"
-                                                             action = "#{userService.setSelectedUser(item)}">        
-                                            </h:commandButton>
-                                        </h:column>
-                                            <f:facet name="footer">
-                                            <h:outputLabel value="UserList #{userService.userList.size()} Users found"/><h:outputLabel value="UserList #{userService.userList.size()} Users found"/>
-                                            </f:facet>
-                                    </h:dataTable>
-                                </h:form> 
-                    </div>
+            <ui:define name="content">
+                 <h:body>
+        <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/users/EditUserDetails.xhtml">Edit your Data</a></li>
+                 <li><a  href="/myWorld/secured/user/users/userList.xhtml">UserList</a></li>
+                </ul>
 
+                <div class="myContent" style="height: 100vH;background-color: #ddd;">
+                
+                    <h:form id="userTable" class="card">
+                        <div>
+                            <h:outputLabel value="Filter List"/>
+                            <h:inputText value="#{userService.searchString}" a:placeholder="Enter Searchstring"/>
+                            <h:commandButton value="Search" action="#{userService.findbyStart}"> 
+                                <f:ajax execute="@form"  render="userTable"/>
+                            </h:commandButton>
+                        </div>
+                        <div class="w3-container w3-center">
+                            <div class="w3-card-4" style="width:50%">
+                                <ui:repeat value="#{userService.userList}" var="item"><hr/>
+                                    <h2> <h:outputLabel value="#{item.username}" class="w3-button w3-green" style="width: 100%;"/></h2>
+                                    <img id="testpic" alt="no avatar" src="http://grottenolm.hopto.org:8080/myWorld/#{item.username}/Avatar/#{item.avatar}"
+                                         style="max-width: 50%;border: 1px solid;"/><br/>      
+                                    <div class="w3-container w3-center"><br/>
+                                        <h:commandButton class="w3-button w3-deep-orange" style="width: 100%;color: black;" value = "view"
+                                                                                action = "#{userService.setSelectedUser(item)}">        
+                                        </h:commandButton>
+                                    </div><hr/>
+                                </ui:repeat>
+                            </div>
+                        </div>                                                                                         
+                    </h:form> 
+                </div> </h:body>
             </ui:define>
         </ui:composition>
-    </h:body>
+   
 </html>
 
 

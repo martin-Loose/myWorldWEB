@@ -19,10 +19,11 @@
 
             </h:head>
             <h:body style="height: 100vH;" onload="#{publicChatMessageService.initView()}">
-                <div class="sidebar" style="height: auto;width: auto;">
-                    <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-                    <a href="/myWorld/secured/user/chat/chatRoomList.xhtml">Chats</a>
-                </div>
+                           <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/chat/chatRoomList.xhtml">ChatView</a></li>
+                 <li><a  href="/myWorld/secured/user/chat/createChatRoom.xhtml">create</a></li>
+   
+   </ul>
                 <div class="myContent" style="overflow: auto;background-color: #f5d76e;padding-left: 5px;">
                     <div class="row">
                         <div class="leftcolumn">
@@ -52,14 +53,7 @@
                                 </div>
                             </h:form>  
                         </div>
-                        <div class="rightcolumn">
-                            <h:form>
-                                <h:commandButton value="tets" action="#{myNEwClass.createLists(loginControll.authenticatedUser.username)}">
-                                    <f:param name="chatID" value="#{publicChatMessageService.chatID}"/>
-                                    <f:param name="chatName" value="#{publicChatMessageService.chatName}"/>
-                                </h:commandButton>
-                            </h:form>
-                        </div>
+                   
                     </div>
                 </div>
             </h:body>

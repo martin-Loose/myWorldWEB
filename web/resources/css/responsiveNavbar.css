@@ -17,13 +17,20 @@ ul.topnav li a {
   text-decoration: none;
 }
 
-ul.topnav li a:hover:not(.active) {background-color: #00e640;}
+ul.topnav li a:hover:not(.active) {background-color: #ddd;color: midnightblue;}
 
-ul.topnav li a.active {background-color: #4CAF50;}
+ul.topnav li a.active {background-color: aliceblue;color: blue;}
 
 ul.topnav li.right {float: right;}
 
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
+  .myContent{
+      margin-left: 0;
+  }
+  .card{
+      width: 100vH;
+      background-color: lightgrey;
+  }
 }

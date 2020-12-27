@@ -18,6 +18,11 @@
                 </f:metadata>
             </h:head>
             <h:body onload="#{newChatroomService.senden()}">
+                          <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/chat/chatRoomList.xhtml">ChatView</a></li>
+                 <li><a  href="/myWorld/secured/user/chat/createChatRoom.xhtml">create</a></li>
+  
+   </ul>
                 <h:form rendered="#{newChatroomService.selectedChatroom.isPrivate}">
                     <h:panelGroup>
                         <h:outputLabel value="Details from: #{chatName}:"/><br/>                  

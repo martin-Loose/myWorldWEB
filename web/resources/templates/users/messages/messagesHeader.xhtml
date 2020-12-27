@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+   
     </h:head>
     <h:body>
         <div class="header">
@@ -13,28 +14,20 @@
             <A style="color: black;font-size: 1.5em;margin-left: 10px;"        
                href="/myWorld/public/publicIndex.xhtml">  myWorld</A>
         </div>
-        <ul class="topnav">
-            <li><h:form>
-                    <h:commandLink value="Logout" action="#{loginControll.logMEout}"/>
-                </h:form></li>
-            <li><a  href="/myWorld/secured/user/users/userIndex.xhtml">UserCenter</a></li>
-            <li><a  href="/myWorld/secured/user/messages/messagesList.xhtml">MessagesList</a></li>
-            <li><a href="/myWorld/secured/user/buddies/requestsList.xhtml">#</a></li>
-            <li><a href="/myWorld/secured/user/buddies/myBuddiesList.xhtml">#</a></li>
-            <li class="right"><a href="#">Contact</a></li> 
+        <h:form>
+            <ul class="topnav" style="background-color: #e8ecf1;">
+           <li><h:commandLink value="Logout" action="#{loginControll.logMEout}"/></li>
+           <li><a  href="/myWorld/secured/user/users/userIndex.xhtml">User</a></li>
+           <li><a  href="/myWorld/secured/user/blog/blogIndex.xhtml">Blog</a></li>
+            <li><a  href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a></li>
+            <li><a  href="/myWorld/secured/user/chat/chatIndex.xhtml">Chat</a></li>
+            
+           <li><a  href="/myWorld/secured/user/messages/messagesIndex.xhtml">Message</a></li>
         </ul>
+        </h:form>
  
 
-        <script>
-            function myFunction() {
-                var x = document.getElementById("myTopnav");
-                if (x.className === "topnav") {
-                    x.className += " responsive";
-                } else {
-                    x.className = "topnav";
-                }
-            }
-        </script>
+       
 
     </h:body>
 </html>

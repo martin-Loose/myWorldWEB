@@ -16,11 +16,11 @@
 
             </h:head>
             <h:body style="height: 100vH;" onload="#{chatMessageService.setChatID(chatroomService.selectedChatroom.id)}">
-                <div class="sidebar" style="height: auto;width: auto;">
-                    <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-                    <a href="/myWorld/secured/user/chat/chatRoomList.xhtml">Chats</a>
-                    
-                </div>
+                           <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/chat/chatRoomList.xhtml">ChatView</a></li>
+                 <li><a  href="/myWorld/secured/user/chat/createChatRoom.xhtml">create</a></li>
+   <li><a  href="/myWorld/secured/user/chat/editChatRoom.xhtml">edit</a></li>             
+   </ul>
                 <div class="myContent" style="overflow: auto;background-color: #f5d76e;padding-left: 5px;">
                     <h:form><h:outputLabel value="#{chatroomService.selectedChatroom.name}"/><br/>
                         <h:inputText value="#{createChatMessageController.myMessage}" size="200" style="width: 300px;"

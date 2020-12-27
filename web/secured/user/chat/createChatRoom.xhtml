@@ -13,12 +13,11 @@
                     template="../../../resources/templates/users/usersTemplate.xhtml"
                     xmlns:h="http://xmlns.jcp.org/jsf/html">
         <ui:define name="content">
-            <div class="sidebar" style="height: auto;width: auto;">
-                <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-                <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
-                <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
-                <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>  
-            </div>
+                       <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/chat/chatRoomList.xhtml">ChatView</a></li>
+                 <li><a  href="/myWorld/secured/user/chat/createChatRoom.xhtml">create</a></li>
+   
+   </ul>
             <div class="myContent" style="height: 75vH;">
                 <div class="card">
                     <h:form id="createChatROOM">  
@@ -27,13 +26,13 @@
                             <h:inputText id="roomname" value="#{createChatroom.chatRoomName}" a:placeholder="Room Name" required="true"
                                          requiredMessage="Bitte Roomname eingeben"
                                          validatorMessage="Nur Buchstaben,Zahlen und _ zulässig">
-                                <f:validateRegex pattern="[\w' ]*" /></h:inputText>
+                                <f:validateRegex pattern="[a-zA-Z0-9 ,.]*" /></h:inputText>
                             <h:message for="roomname" showDetail="true" style="color: red;"/>
                             <h:inputTextarea id="roomtheme" value="#{createChatroom.theme}" 
                                              style="width: 120px;height: 120px;" a:placeholder="Theme" 
                                              required="true" requiredMessage="enter a Theme"
                                              validatorMessage="Nur Buchstaben,Zahlen und _ zulässig">
-                                <f:validateRegex pattern="[\w ]*" /><br/> 
+                                <f:validateRegex pattern="[a-zA-Z0-9 ,.]*" /><br/> 
                                 <h:message for="roomtheme" showDetail="true" style="color: red;"/><br/>
                                 <f:ajax event="keyup" listener="#{createChatroom.test}" render="restzeichen"/>
                             </h:inputTextarea><br/>

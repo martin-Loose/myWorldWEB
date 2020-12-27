@@ -878,6 +878,7 @@ exists or setup the property manually. For example like this:
                 COMPILATION SECTION
             -->
     <target depends="init" if="no.dist.ear.dir" name="deps-module-jar" unless="no.deps">
+        <ant antfile="${project.myWorldBlog-EJB}/build.xml" inheritall="false" target="dist"/>
         <ant antfile="${project.myWorldBuddies-EJB}/build.xml" inheritall="false" target="dist"/>
         <ant antfile="${project.myWorldChatRoom-EJB}/build.xml" inheritall="false" target="dist"/>
         <ant antfile="${project.myWorldMessages-EJB}/build.xml" inheritall="false" target="dist"/>
@@ -885,6 +886,9 @@ exists or setup the property manually. For example like this:
         <ant antfile="${project.myworld_helperAndAuth-EJB}/build.xml" inheritall="false" target="dist"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="deps-ear-jar" unless="no.deps">
+        <ant antfile="${project.myWorldBlog-EJB}/build.xml" inheritall="false" target="dist-ear">
+            <property location="${build.dir}" name="dist.ear.dir"/>
+        </ant>
         <ant antfile="${project.myWorldBuddies-EJB}/build.xml" inheritall="false" target="dist-ear">
             <property location="${build.dir}" name="dist.ear.dir"/>
         </ant>
@@ -1049,6 +1053,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${reference.myWorldMessages-EJB.dist}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}"/>
         <copyfiles files="${reference.myWorldChatRoom-EJB.dist}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}"/>
         <copyfiles files="${reference.myworld_helperAndAuth-EJB.dist}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}"/>
+        <copyfiles files="${reference.myWorldBlog-EJB.dist}" iftldtodir="${build.web.dir}/WEB-INF" todir="${dist.ear.dir}"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update"/>
     </target>
@@ -1058,6 +1063,7 @@ exists or setup the property manually. For example like this:
         <copyfiles files="${reference.myWorldMessages-EJB.dist}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${reference.myWorldChatRoom-EJB.dist}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${reference.myworld_helperAndAuth-EJB.dist}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copyfiles files="${reference.myWorldBlog-EJB.dist}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init" if="dist.ear.dir" name="-clean-webinf-lib">
         <delete dir="${build.web.dir}/WEB-INF/lib"/>
@@ -1471,6 +1477,7 @@ exists or setup the property manually. For example like this:
                 CLEANUP SECTION
             -->
     <target depends="init" name="deps-clean" unless="no.deps">
+        <ant antfile="${project.myWorldBlog-EJB}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.myWorldBuddies-EJB}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.myWorldChatRoom-EJB}/build.xml" inheritall="false" target="clean"/>
         <ant antfile="${project.myWorldMessages-EJB}/build.xml" inheritall="false" target="clean"/>

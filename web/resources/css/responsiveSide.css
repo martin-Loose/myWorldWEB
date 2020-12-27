@@ -31,7 +31,7 @@ body {
 }
 .myContent{
    
-    margin-left: 150px; /**muss angepasst werden**/
+    margin-left: 0; /**muss angepasst werden**/
    /** height: 80vH;**/
 }
 div.content {
@@ -44,19 +44,35 @@ div.content {
   .sidebar {
     width: 100%;
     height: auto;
-    position: relative;
+    position: relative;background-color: #d2be0e;
   }
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
   .myContent{
       margin-left: 0px;
+      background-color: #4CAF50;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .sidebar a {
+@media screen and (max-width: 500px) {
+ /**.sidebar a {
     text-align: center;
-    float: none;
+    float: none; background-color: #00ffff;
   }
- 
+ .myContent{
+      margin-left: 0px;
+      background-color: #00ffff;
+  }**/
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;background-color: #00ffff;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+  .myContent{
+      margin-left: 0px;
+      background-color: #4CAF50;
+      height: 100vH;
+  }
 }

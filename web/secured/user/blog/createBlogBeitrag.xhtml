@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body style="height: 100vH;">
+        <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        template="../../../resources/templates/users/usersTemplate.xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html">
+            <ui:define name="content" >
+               <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/blog/BlogView.xhtml">BlogView</a></li>
+                 <li><a  href="/myWorld/secured/user/blog/myBlogsView.xhtml">myBlogs</a></li>
+   <li><a  href="/myWorld/secured/user/blog/createBlogBeitrag.xhtml">Create</a></li>             
+   </ul>
+
+                <div class="myContent" style="height: 100vH;background-color: #ddd;">
+                    <div class="card">
+                          <h:form enctype="multipart/form-data">
+        <div id="wrapper">
+           
+            <h:inputFile id="fileselect1"   value="#{createBlogController.image}" onchange="preview_image(event)">
+                <f:ajax event="change" listener="#{createBlogController.holdImage()}" />
+                 </h:inputFile><br/>
+            <img id="output_image" style="max-width: 30%;"/>
+                    </div></h:form>
+                        <h:form>
+                            <h:panelGroup>
+                                <h:inputText style="width: 200px;" id="blogTitel" value="#{createBlogController.myblogTitel}" 
+                                             a:placeholder="enter Title" maxlength="40" required="true"
+                                             requiredMessage="enter Titel"
+                                             validatorMessage="only Letters/Numbers/Space and , or . allowed">
+                                    <f:validateRegex pattern="[\w _,.]*" /></h:inputText><br/> 
+                                <h:message for="blogTitel" showDetail="true" style="color: red;"/><br/>
+                                <h:inputTextarea id="blogText" value="#{createBlogController.myblogText}" 
+                                                 a:placeholder="enter Text" required="true"
+                                                 requiredMessage="enter Text" 
+                                                 validatorMessage="only Letters/Numbers/Space and , or . allowed. min 10 - max 400">
+                                    <f:validateRegex pattern="[\w _,.]{10,400}" />
+                                </h:inputTextarea><br/> 
+                                <h:outputLabel value="Public">
+                                    <h:selectBooleanCheckbox id="public" value="#{createBlogController.bolPublic}" />
+        </h:outputLabel>
+                                           <h:outputLabel value="Private">
+                                               <h:selectBooleanCheckbox id="private" value="#{createBlogController.bolPrivate}"/>
+        </h:outputLabel>
+                                <h:message for="blogText" showDetail="true" style="color: red;"/><br/>
+                                <h:commandButton value="save"
+                                                 action="#{createBlogController.speichern(loginControll.authenticatedUser.username)}"/>
+                            </h:panelGroup>
+                        </h:form>
+</div> </div> <script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ };
+ reader.readAsDataURL(event.target.files[0]);
+ 
+}
+</script>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

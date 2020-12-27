@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package myWorldUsers_Controller;
+package service;
 
-import controller.create.CreateUserController_EJB;
+import controller.service.GetPath2PicService_EJB;
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -14,8 +15,8 @@ import javax.inject.Named;
  *
  * @author marlo0212
  */
-@Named(value="createUser")
+@Named(value="getPath2PicService")
 @SessionScoped
-public class CreateUserController extends CreateUserController_EJB implements Serializable{
+public class GetPath2PicService extends GetPath2PicService_EJB implements Serializable {
     
 }

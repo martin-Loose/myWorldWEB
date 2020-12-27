@@ -5,17 +5,18 @@
  */
 package myWorldUsers_Controller;
 
-import controller.create.CreateUserController_EJB;
+import controller.EditUserBaseDataController_EJB;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author marlo0212
  */
-@Named(value="createUser")
-@SessionScoped
-public class CreateUserController extends CreateUserController_EJB implements Serializable{
+@Named(value="editUserBaseDataController")
+@ViewScoped
+public class EditUserBaseDataController extends EditUserBaseDataController_EJB implements Serializable {
     
 }

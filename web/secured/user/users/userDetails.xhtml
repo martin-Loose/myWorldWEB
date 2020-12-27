@@ -5,38 +5,37 @@
 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:body onload="#{userService.resetSelectedUser()}" onunload="#{userService.resetSelectedUser()}">
+   
         <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                         template="../../../resources/templates/users/usersTemplate.xhtml"
                         xmlns:h="http://xmlns.jcp.org/jsf/html">
+            <link href="../../../resources/css/responsiveNavbar.css" rel="stylesheet" type="text/css"/>
            <ui:define name="content">
-            <div class="sidebar" style="height: auto;width: auto;">
-  <a class="active" href="/myWorld/secured/user/users/userIndex.xhtml">Center</a>
-  <a href="/myWorld/secured/user/messages/messagesIndex.xhtml">News</a>
-  <a href="/myWorld/secured/user/buddies/buddiesIndex.xhtml">Buddy</a>
-  <a href="/myWorld/secured/user/lists/listsIndex.xhtml">Lists</a>  
-</div>
-              <div class="myContent" style="height: 75vH;">
+                <h:body>
+                  
+   
+                <ul class="topnav">
+                 <li><a  href="/myWorld/secured/user/users/EditUserDetails.xhtml">Edit your Data</a></li>
+                 <li><a  href="/myWorld/secured/user/users/userList.xhtml">UserList</a></li>
+                </ul> 
+           
                             <div class="card">
                                 <h:form id="userDetail">
                                     <h:message for="request" showDetail="true"  showSummary="true" style="color: red;background-color: lightblue;"/>
                                     <h:panelGroup id="details">
-                                        <h:panelGrid columns="2" captionClass="fakeimg" >
-                                            <f:facet name="caption">
-                                                <img src="../../resources/css/avatar.png" alt="Avatar" style="height: 100px;width: 100px;"/>
-                                            </f:facet>
-                                            <f:facet name="header">
-                                                <h:outputLabel value="Userdetails:"/>
-                                            </f:facet>
-                                            <h:outputLabel value="Username:"/>
-                                            <h:outputLabel value=" #{userService.selectedUser.username}"/>
-                                            <h:outputLabel value="Email:"/>
-                                            <h:outputLabel value=" #{userService.selectedUser.email}"/>
-                                            <h:outputLabel value="Geboren am:"/>
-                                            <h:outputLabel value="no profile"/>
-                                            <h:outputLabel value="Geboren in:"/>
-                                              <h:outputLabel value="no profile"/>
-                                            <f:facet name="footer">
+                                        <div class="fakeimg">
+                                            <img id="testpic" alt="no avatar" src="http://grottenolm.hopto.org:8080/myWorld/#{userService.selectedUser.username}/Avatar/#{userService.selectedUser.avatar}"
+                                         style="max-width: 50%;border: 1px solid;"/>
+                                        </div>
+                                            <h:outputLabel value="Username:"/><br/>
+                                            <h:outputLabel value=" #{userService.selectedUser.username}"/><br/>
+                                            <h:outputLabel value="Email:"/><br/>
+                                            <h:outputLabel value=" #{userService.selectedUser.email}"/><br/>
+                                            <h:outputLabel value="Geboren am:"/><br/>
+                                            <h:outputLabel value="no profile"/><br/>
+                                            <h:outputLabel value="Geboren in:"/><br/>
+                                              <h:outputLabel value="no profile"/><br/>
+                                            
                                                 <h:panelGrid id="buttons" columns="3">
                                                     <h:commandButton value="send Message" action="#{createMessageController
                                                                                                     .prepareMessage(loginControll.authenticatedUser.id
@@ -49,16 +48,15 @@
                                                                             (loginControll.authenticatedUser.id,userService.selectedUser.id)}"/>
                                                     <h:commandButton value="Back" action="userList.xhtml"/>
                                                 </h:panelGrid>
-                                            </f:facet>
-                                        </h:panelGrid>
-                                    </h:panelGroup>
+                                           
+                                 </h:panelGroup>
                                 </h:form> 
                             </div>
-                        </div>
-                   
+                        
+                 </h:body>    
             </ui:define>
         </ui:composition>
-    </h:body>
+  
 </html>
 
 
